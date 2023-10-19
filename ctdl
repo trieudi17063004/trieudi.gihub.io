@@ -1,0 +1,76 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        MyList myList = new MyList();
+
+        // Đọc file danhsach.txt vào danh sách
+        myList.FileToList("danhsach.txt");
+
+        // Hiển thị danh sách
+        Console.WriteLine("Danh sach cac phan tu:");
+        myList.ShowList();
+
+        // Tìm Node có giá trị là 23
+        int valueToFind = 23;
+        Node foundNode = myList.Find(valueToFind);
+        if (foundNode != null)
+        {
+            Console.WriteLine("Tim thay Node co gia tri {0}", valueToFind);
+        }
+        else
+        {
+            Console.WriteLine("Khong tim thay Node co gia tri {0}", valueToFind);
+        }
+
+        // Hiển thị danh sách các phần tử chẵn
+        Console.WriteLine("Danh sach cac phan tu chan:");
+        myList.GetEvenList();
+
+        // Hiển thị danh sách các phần tử lẻ
+        Console.WriteLine("Danh sach cac phan tu le:");
+        myList.GetOddList();
+
+        // Tìm phần tử lớn nhất
+        int max = myList.GetMax();
+        Console.WriteLine("Phan tu lon nhat trong danh sach la: {0}", max);
+
+        // Tìm phần tử nhỏ nhất
+        int min = myList.GetMin();
+        Console.WriteLine("Phan tu nho nhat trong danh sach la: {0}", min);
+
+        // Sắp xếp danh sách tăng dần
+        myList.Sort();
+        Console.WriteLine("Danh sach sau khi sap xep:");
+        myList.ShowList();
+
+        // Xóa phần tử có giá trị là 47
+        int valueToRemove = 47;
+        bool removed = myList.RemoveX(valueToRemove);
+        if (removed)
+        {
+            Console.WriteLine("Da xoa phan tu co gia tri {0}", valueToRemove);
+        }
+        else
+        {
+            Console.WriteLine("Khong tim thay phan tu co gia tri {0} de xoa", valueToRemove);
+        }
+
+        // Chèn phần tử 100 sau phần tử có giá trị là 13
+        int valueToInsert = 100;
+        int insertAfterValue = 13;
+        myList.InsertAfter(valueToInsert, insertAfterValue);
+        Console.WriteLine("Danh sach sau khi chen {0} sau phan tu co gia tri {1}:", valueToInsert, insertAfterValue);
+        myList.ShowList();
+
+        // Chèn phần tử 200 trước phần tử có giá trị là 8
+        int insertBeforeValue = 8;
+        myList.InsertBefore(200, insertBeforeValue);
+        Console.WriteLine("Danh sach sau khi chen 200 truoc phan tu co gia tri {0}:", insertBeforeValue);
+        myList.ShowList();
+
+        Console.ReadLine();
+    }
+}
